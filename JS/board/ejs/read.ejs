@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('patials/head.ejs') %>
+  <body>
+    <main>
+      <div>
+        <h1><%=article.subject%></h1>
+        <hr />
+        <span><%=article.content%></span>
+        <hr />
+        <ul>
+          <li>조회수 : <%=article.hitcount %></li>
+          <li>작성시각 : <%=time %></li>
+        </ul>
+        <%if (article.origin) { %>
+        <a href="/download/<%=board%>?index=<%=article.seq%>"
+          ><%=article.origin%></a
+        >
+        <% }%>
+      </div>
+      <a href="/list/<%=board%>?page=1">목록으로</a>
+    </main>
+  </body>
+</html>

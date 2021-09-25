@@ -1,0 +1,13 @@
+.board {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+td {
+  width: 15px;
+  height: 15px;
+  font-size: 0.5em;
+  line-height: 15px;
+  color: white;
+  text-align: center;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('patials/head.ejs') %>
+  <body>
+    <main>
+    <h1>검색</h1>
+    <form action="/search" , method="get">
+      찾을 제목을 적으시오 <input type="text", name=subject><br />
+      찾을 게시판 선택 <select name="board" >
+        <option value="board1">자유게시판</option>
+        <option value="board2">출석체크</option>
+        <option value="board3">가입인사</option>
+        <option value="board4">Q&A</option>
+
+      </select>
+      <input type="submit" value="검색">
+    </form>
+    <hr />
+    
+    <% if (articles.length > 0 ) { %>
+      <table>
+        <% for(var i=0; i<articles.length; i++) {%>
+          <tr>
+            <td><%=articles[i].seq%></td>
+            <% if (articles[i].origin !== null) { %>
+              <td>
+                <a href="/read/<%=board%>?num=<%=articles[i].seq%>"
+                  ><%=articles[i].subject%> ▒</a
+                >
+              </td>
+              <%} else {%>
+              <td>
+                <a href="/read/<%=board%>?num=<%=articles[i].seq%>"
+                  ><%=articles[i].subject%></a
+                >
+              </td>
+              <%} %>
+            <td><%=articles[i].content%></td>
+            <td><%=articles[i].regtime%></td>
+            <td><%=articles[i].hitcount%></td>
+          </tr>
+        <% } %>
+    </table>
+    <%} %>
+    <br>
+    <a href="/">홈으로</a>
+  </main>
+</html>

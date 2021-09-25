@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('patials/head.ejs') %>
+  <body>
+    <hr />
+    <main>
+      <nav>
+        <ul>
+          <li><a href="/list/board1?page=1">자유게시판</a></li>
+          <li><a href="/list/board2?page=1">출석체크</a></li>
+          <li><a href="/list/board3?page=1">가입인사</a></li>
+          <li><a href="/list/board4?page=1">Q&A</a></li>
+
+          <%if(user){%>
+          <li><a href="/edit"><%=user.nickname%>`s profile</a></li>
+          <li><a href="/logout">로그아웃</a></li>
+          <%} else { %>
+          <li><a href="/login">로그인</a></li>
+          <li><a href="/join">회원가입</a></li>
+          <%}%>
+        </ul>
+      </nav>
+      <h1>게시판</h1>
+
+      <table>
+        <tr>
+          <th>글 번호</th>
+          <th>제목</th>
+          <th>내용</th>
+          <th>작성시간</th>
+          <th>조회 수</th>
+        </tr>
+        <% for(var i = 0; i < 5; i++) {%> <%if (num+i == boardLength) break%>
+        <tr>
+          <td><%=result[num+i].seq%></td>
+
+          <% if (result[num+i].origin !== null) { %>
+          <td>
+            <a href="/read/<%=board%>?num=<%=result[num+i].seq%>"
+              ><%=result[num+i].subject%> ▒</a
+            >
+          </td>
+          <%} else {%>
+          <td>
+            <a href="/read/<%=board%>?num=<%=result[num+i].seq%>"
+              ><%=result[num+i].subject%></a
+            >
+          </td>
+          <%} %>
+          <td><%=result[num+i].content%></td>
+          <td><%=result[num+i].regtime%></td>
+          <td><%=result[num+i].hitcount%></td>
+        </tr>
+        <% } %>
+      </table>
+
+      <% if (boardLength == 0) { %>
+      <h1>게시물이 없습니다</h1>
+      <% } %>
+
+      <div>
+        <%if(pageStart - 1 > 0 ) { %>
+        <a href="/list/<%=board%>?page=<%=(pageStart-1)%>">이전</a>
+        <% } %> <%for(var i =pageStart; i <= pageStart+4; i++) { %>
+        <a href="/list/<%=board%>?page=<%=i %>"><%= i%></a>
+        <!-- max와 마지막 페이지번호가 같다면 플래그를 생성 하고 for탈출 -->
+        <%if(max <= i) { var flag = 1; break; }%> <% } %>
+        <!-- 플래그가 1이라면  마지막 페이지 이므로
+          이후 버튼을 만들지 않아도됨-->
+        <%if(flag != 1 ) { %>
+        <a href="/list/<%=board%>?page=<%=(pageStart+5)%>">이후</a>
+        <% } %>
+      </div>
+
+      <a href="/write/<%=board%>">글쓰기 </a>
+      <a href="/search">조회</a>
+    </main>
+  </body>
+</html>

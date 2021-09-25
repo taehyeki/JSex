@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('patials/head.ejs') %>
+  <body>
+    <main>
+      <span>수정 / 삭제</span>
+      <form action="" method="post">
+        <input type="text" name="old" hidden value="<%=data.nickname%>" />
+        이름 변경
+        <input type="text" name="nickname" value="<%=data.nickname%>" />
+        <input type="submit" value="변경" />
+        <hr />
+        <a href="/delete">삭제</a>
+      </form>
+    </main>
+  </body>
+</html>

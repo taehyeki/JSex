@@ -1,0 +1,23 @@
+table {
+  width: 500px;
+  height: 500px;
+  border-collapse: collapse;
+
+}
+td {
+  border: 1px solid;
+  width: 10px;
+  height: 5px;
+}
+
+.notVisited {
+  background-color: black;
+}
+
+.present {
+  background-color: blue;
+}
+
+.notRoad{
+  background-color: red;
+}

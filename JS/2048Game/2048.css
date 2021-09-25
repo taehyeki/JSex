@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+
+}
+.container {
+  width: 400px;
+  height: 400px;
+  border: 1px solid;
+  
+  
+}
+
+.Grade2{
+  position: absolute;
+  border: 1px solid ;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+ transition: 0.3s;
+ font-size: 50px;
+ text-align: center;
+ line-height: 100px;
+}
+.Grade4{
+  position: absolute;
+  border: 1px solid ;
+  width: 100px;
+  height: 100px;
+  background-color: yellowgreen;
+ transition: 0.3s;
+ font-size: 50px;
+ text-align: center;
+ line-height: 100px;
+}
+
+.Grade8 {
+  position: absolute;
+  border: 1px solid ;
+  width: 100px;
+  height: 100px;
+  background-color: dodgerblue;
+ transition: 0.3s;
+ font-size: 50px;
+ text-align: center;
+ line-height: 100px;
+}
+
+.Grade16 {
+  position: absolute;
+  border: 1px solid ;
+  width: 100px;
+  height: 100px;
+  background-color: darkgoldenrod;
+ transition: 0.3s;
+ font-size: 50px;
+ text-align: center;
+ line-height: 100px;
+}
+.Grade32 {
+  position: absolute;
+  border: 1px solid ;
+  width: 100px;
+  height: 100px;
+  background-color: lightcoral;
+ transition: 0.3s;
+ font-size: 50px;
+ text-align: center;
+ line-height: 100px;
+}
+.Grade64 {
+  position: absolute;
+  border: 1px solid ;
+  width: 100px;
+  height: 100px;
+  background-color: darkkhaki;
+ transition: 0.3s;
+ font-size: 50px;
+ text-align: center;
+ line-height: 100px;
+
+}

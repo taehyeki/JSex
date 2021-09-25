@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script></script>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+    </tr>
+    <!-- 여기서부터는.. 개판이라 이해가 잘 안되실수도...ㅜㅜ 
+    받은 배열의 개수만 큼 반복 !-->
+     <% for(var i =0; i<arr.length; i++){ %>
+      <tr>
+        <!-- num은 pageNum이 1일 경우에는 0부터시작
+                   pageNum이 2일경우에는  5부터시작 ... 
+        그래서 +1 해주어야 게시물이 1부터 시작, 6부터시작-->
+        <td> <%=num+i+1 %></td>
+        <!-- 근데 실제로 넘겨주는 인덱스는 +1을 안한 것인데
+             왜냐하면 JSON의 index는 0부터 시작하기때문에 이를 맞춰주기 위함 -->
+        <td><a href='/read?index=<%=num+i %>'><%= arr[i].subject %></a></td>
+      </tr>
+      <% } %>
+      
+    </table>
+    
+    <div >
+      <!-- pageStart는 아까 보셨다싶이 
+        페이지 번호가 1 ~ 5이면  1
+                      6 ~ 10이면 6 ...
+      pageStart - 1 0이면 1번페이지 이전이므로 이전을 출력안함-->
+      <%if(pageStart - 1 > 0 ) { %>
+      <a href='list?page=<%=(pageStart-1)%>'>이전</a>
+      <% } %>
+      <!--  -->
+      <%for(var i =pageStart; i <= pageStart+4; i++) { %>
+        <a href='list?page=<%=i %>'><%= i%></a>
+        <!-- max와 마지막 페이지번호가 같다면 플래그를 생성 하고 for탈출 -->
+        <%if(max <= i) { var flag = 1; break; }%>
+      <% } %>
+      <!-- 플래그가 1이라면  마지막 페이지 이므로
+          이후 버튼을 만들지 않아도됨-->
+      <%if(flag != 1 ) { %>
+      <a href="list?page=<%=(pageStart+5)%>">이후</a>
+      <% } %>
+    </div>
+    <a href='/write.html'>글쓰기</a>
+  
+</body>
+</html>
